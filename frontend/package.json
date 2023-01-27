@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"iconsax-react": "^0.0.8",
 		"next": "13.1.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
