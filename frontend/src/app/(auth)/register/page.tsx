@@ -18,7 +18,7 @@ export default function Register() {
 
 				<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
 					<input
-						className="bg flex-1 bg-transparent font-medium outline-none"
+						className="bg flex-1 bg-transparent text-sm font-medium outline-none"
 						type="email"
 						name="email"
 						id="email"
@@ -33,7 +33,7 @@ export default function Register() {
 
 				<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
 					<input
-						className="bg flex-1 bg-transparent font-medium outline-none"
+						className="bg flex-1 bg-transparent text-sm font-medium outline-none"
 						type="password"
 						name="password"
 						id="password"
@@ -53,7 +53,7 @@ export default function Register() {
 					</Link>
 				</h2>
 
-				<button className="flex items-center justify-center gap-4 rounded-lg bg-active-100 py-2 pr-6 pl-9 text-sm max-md:py-3">
+				<button className="flex items-center justify-center gap-4 rounded-lg bg-active-100 py-2 pr-6 pl-9 text-sm max-md:py-[10px]">
 					Continue
 					<ArrowRight2 size="18" color="#FFF" variant="Bold" />
 				</button>

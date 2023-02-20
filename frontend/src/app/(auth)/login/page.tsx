@@ -18,7 +18,7 @@ export default function Register() {
 
 				<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
 					<input
-						className="bg flex-1 bg-transparent font-medium outline-none"
+						className="bg flex-1 bg-transparent text-sm font-medium outline-none"
 						type="email"
 						name="email"
 						id="email"
@@ -33,13 +33,13 @@ export default function Register() {
 
 				<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
 					<input
-						className="bg flex-1 bg-transparent font-medium outline-none"
+						className="bg flex-1 bg-transparent text-sm font-medium outline-none"
 						type="password"
 						name="password"
 						id="password"
 					/>
 
-					<button className="">
+					<button className="" type="button">
 						<EyeSlash size="18" color="#FFF" variant="Bold" />
 					</button>
 				</div>
@@ -48,12 +48,15 @@ export default function Register() {
 			<div className="flex gap-3 max-md:flex-col">
 				<h2 className="flex-1 whitespace-nowrap text-sm font-medium text-content-80">
 					Didn&apos;t have an account?&nbsp;
-					<Link href="/login" className="text-active-100 hover:underline">
+					<Link href="/register" className="text-active-100 hover:underline">
 						Sign Up
 					</Link>
 				</h2>
 
-				<button className="flex items-center justify-center gap-4 whitespace-nowrap rounded-lg bg-active-100 py-2 pr-6 pl-9 text-sm hover:outline-1 hover:outline-content-100 max-md:py-3">
+				<button
+					className="flex items-center justify-center gap-4 whitespace-nowrap rounded-lg bg-active-100 py-2 pr-6 pl-9 text-sm hover:outline-1 hover:outline-content-100 max-md:py-[10px]"
+					type="submit"
+				>
 					Sign In
 					<ArrowRight2 size="18" color="#FFF" variant="Bold" />
 				</button>
