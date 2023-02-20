@@ -1,21 +1,21 @@
-import './globals.css';
+"use client";
 
-import Sidebar from '@/components/sidebar';
+import { useEffect } from "react";
+import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+	useEffect(() => {
+		console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+	}, []);
+
 	return (
-		<html lang="en-GB">
-			<head>
-				<meta charSet="UTF-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<link rel="icon" href="/favicon.ico" />
-			</head>
-
-			<body className="flex bg-background font-sans">
-				<Sidebar />
-
-				<main className="flex h-[100vh] flex-1 gap-3 self-stretch p-5">{children}</main>
-			</body>
+		<html lang="en">
+			{/*
+        <head /> will contain the components returned by the nearest parent
+        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
+      */}
+			<head />
+			<body className="bg-background font-inter text-content-100">{children}</body>
 		</html>
 	);
 }

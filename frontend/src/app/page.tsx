@@ -1,37 +1,19 @@
-import Calendar from '@/components/calendar';
-import Graph from '@/components/graph';
-import Overview from '@/components/overview';
-import Schedule from '@/components/schedule';
-import Search from '@/components/search';
-import Statitics from '@/components/statistics';
-import Activity from '@/components/activity';
+import Link from "next/link";
 
 export default function Home() {
 	return (
-		<>
-			<div className="flex flex-1 flex-col gap-3">
-				<Search />
+		<div className="flex min-h-screen min-w-full flex-col items-center justify-center">
+			<h1 className="text-2xl">Hello World</h1>
 
-				<div className="flex max-h-[calc(100%-0.75rem-46px)] flex-1 gap-3">
-					<div className="flex max-h-full flex-col gap-3">
-						<Statitics />
-
-						<Activity />
-					</div>
-
-					<div className="flex flex-1 flex-col gap-3">
-						<Graph />
-
-						<Overview />
-					</div>
-				</div>
+			<div className="mt-4">
+				<Link href="/login" className="text-active-100 hover:underline">
+					Login
+				</Link>
+				<span className="mx-2">|</span>
+				<Link href="/register" className="text-active-100 hover:underline">
+					Register
+				</Link>
 			</div>
-
-			<div className="flex flex-col gap-3">
-				<Calendar />
-
-				<Schedule />
-			</div>
-		</>
+		</div>
 	);
 }

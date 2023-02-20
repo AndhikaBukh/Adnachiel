@@ -1,50 +1,41 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
-		'./pages/**/*.{js,ts,jsx,tsx}',
-		'./components/**/*.{js,ts,jsx,tsx}',
+		"./app/**/*.{js,ts,jsx,tsx}",
+		"./pages/**/*.{js,ts,jsx,tsx}",
+		"./components/**/*.{js,ts,jsx,tsx}",
 
 		// Or if using `src` directory:
-		'./src/**/*.{js,ts,jsx,tsx}',
+		"./src/**/*.{js,ts,jsx,tsx}",
 	],
-	theme: {
-		colors: {
-			background: '#F0F3FA',
-			white: '#fff',
-			black: '#383838',
-			orange: '#FF5722',
-			tangerine: '#ED8B00',
-			yellow: '#FFE577',
-			blue: '#01A2E6',
-			solidBlue: '#005DE9',
-			purple: '#7928CA',
-			neutral: {
-				100: '#383838',
-				90: '#383838E6',
-				80: '#383838CC',
-				70: '#383838B3',
-				60: '#38383899',
-				50: '#38383880',
-				40: '#38383866',
-				30: '#3838384D',
-				20: '#38383833',
-				10: '#3838381A',
-			},
-			success: {
-				50: '#16C79A',
-				25: '#16C79A40',
-			},
-			error: {
-				50: '#F05454',
-			},
-			warning: {
-				50: '#FF9C09',
-			},
-		},
 
-		dropShadow: {
-			default: '1px 1px 6px rgba(0, 0, 0, 0.2)',
+	theme: {
+		extend: {
+			fontFamily: {
+				inter: ["Inter", "sans-serif"],
+			},
+
+			colors: {
+				background: "rgba(24, 26, 46, 1)",
+				foreground: "rgba(20, 22, 39, 1)",
+				foreground2: "rgba(27, 29, 52, 1)",
+
+				content: {
+					100: "rgba(255, 255, 255, 1)",
+					80: "rgba(255, 255, 255, 0.8)",
+					60: "rgba(255, 255, 255, 0.6)",
+				},
+
+				active: {
+					100: "rgba(0, 93, 233, 1)",
+					20: "rgba(0, 93, 233, 0.2)",
+				},
+
+				borderLine: {
+					30: "rgba(37, 42, 67, 0.3)",
+				},
+			},
 		},
 	},
+
 	plugins: [],
 };
