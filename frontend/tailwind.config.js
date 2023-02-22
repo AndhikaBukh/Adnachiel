@@ -16,8 +16,9 @@ module.exports = {
 
 			colors: {
 				background: "rgba(24, 26, 46, 1)",
+				"background-light": "rgba(90, 111, 125, 0.15)",
 				foreground: "rgba(20, 22, 39, 1)",
-				foreground2: "rgba(27, 29, 52, 1)",
+				"foreground-light": "rgba(27, 29, 52, 1)",
 
 				content: {
 					100: "rgba(255, 255, 255, 1)",
