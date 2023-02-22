@@ -1,7 +1,8 @@
+import AppInput from "@/component/input";
 import { ArrowRight2, EyeSlash } from "iconsax-react";
 import Link from "next/link";
 
-export default function Register() {
+export default function Login() {
 	return (
 		<>
 			<div className="flex flex-col gap-1">
@@ -11,39 +12,9 @@ export default function Register() {
 				</p>
 			</div>
 
-			<div className="flex flex-col gap-2 self-stretch">
-				<label className="text-sm text-content-80" htmlFor="email">
-					Email Address
-				</label>
+			<AppInput label="Email Address" type="email" />
 
-				<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
-					<input
-						className="bg flex-1 bg-transparent text-sm font-medium outline-none"
-						type="email"
-						name="email"
-						id="email"
-					/>
-				</div>
-			</div>
-
-			<div className="flex flex-col gap-2 self-stretch">
-				<label className="text-sm text-content-80" htmlFor="password">
-					Password
-				</label>
-
-				<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
-					<input
-						className="bg flex-1 bg-transparent text-sm font-medium outline-none"
-						type="password"
-						name="password"
-						id="password"
-					/>
-
-					<button className="" type="button">
-						<EyeSlash size="18" color="#FFF" variant="Bold" />
-					</button>
-				</div>
-			</div>
+			<AppInput label="Password" type="password" />
 
 			<div className="flex gap-3 max-md:flex-col">
 				<h2 className="flex-1 whitespace-nowrap text-sm font-medium text-content-80">
