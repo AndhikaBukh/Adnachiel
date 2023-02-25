@@ -2,7 +2,7 @@ import Sidebar from "@/component/sidebar";
 
 export default function App({ children }: { children: React.ReactNode }) {
 	return (
-		<div className="flex min-h-screen min-w-full">
+		<div className="flex min-h-full min-w-full">
 			<Sidebar />
 
 			<div className="flex flex-1 flex-col">
@@ -13,7 +13,7 @@ export default function App({ children }: { children: React.ReactNode }) {
 					</h1>
 				</div>
 
-				<main className="max-[1050px]:rounded-tl-none flex flex-1 items-center justify-center rounded-tl-xl bg-background">
+				<main className="flex flex-1 items-center justify-center rounded-tl-xl bg-background max-[1050px]:rounded-tl-none">
 					{children}
 				</main>
 			</div>
