@@ -16,17 +16,11 @@ export default function AppInput({ label, type }: AppInputProps) {
 	const usePassword = () => {
 		if (changeType === "password") {
 			setChangeType("text");
-			setChangeIcon(<EyeSlash size="18" color="#FFF" variant="Bold" />);
-
-			console.log("Changed to TEXT");
+			setChangeIcon(<Eye size="18" color="#FFF" variant="Bold" />);
 		} else {
 			setChangeType("password");
-			setChangeIcon(<Eye size="18" color="#FFF" variant="Bold" />);
-
-			console.log("Changed to PASSWORD");
+			setChangeIcon(<EyeSlash size="18" color="#FFF" variant="Bold" />);
 		}
-
-		console.log(changeType);
 	};
 
 	useEffect(() => {
@@ -46,7 +40,7 @@ export default function AppInput({ label, type }: AppInputProps) {
 				</label>
 			)}
 
-			<div className="flex items-center rounded-md border-2 border-borderLine-30 !bg-foreground2 py-2 px-4 focus-within:border-active-100">
+			<div className="flex items-center rounded-md border-2 border-borderLine-30 bg-foreground-light py-[10px] px-4 transition-[border] duration-300 focus-within:border-active-100">
 				<input
 					className="bg flex-1 bg-transparent text-sm font-medium outline-none"
 					type={changeType}
@@ -55,7 +49,7 @@ export default function AppInput({ label, type }: AppInputProps) {
 					ref={getInput}
 				/>
 
-				{type === "password" && (
+				{type !== undefined && (
 					<button type="button" onClick={usePassword}>
 						{changeIcon}
 					</button>
