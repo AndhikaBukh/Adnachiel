@@ -1,3 +1,4 @@
+import AppButton from "@/component/button";
 import AppInput from "@/component/input";
 import { ArrowRight2, EyeSlash } from "iconsax-react";
 import Link from "next/link";
@@ -24,13 +25,10 @@ export default function Login() {
 					</Link>
 				</h2>
 
-				<button
-					className="flex items-center justify-center gap-4 whitespace-nowrap rounded-lg bg-active-100 py-2 pr-6 pl-9 text-sm hover:outline-1 hover:outline-content-100 max-md:py-[10px]"
-					type="submit"
-				>
+				<AppButton type="submit">
 					Sign In
 					<ArrowRight2 size="18" color="#FFF" variant="Bold" />
-				</button>
+				</AppButton>
 			</div>
 		</>
 	);
