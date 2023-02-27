@@ -1,11 +1,20 @@
+"use client";
+
+import { ArrowRight2 } from "iconsax-react";
+import { useRouter } from "next/navigation";
 import AppButton from "@/component/button";
 import AppInput from "@/component/input";
-import { ArrowRight2, EyeSlash } from "iconsax-react";
 import Link from "next/link";
 
 export default function Register() {
+	const router = useRouter();
+
 	return (
-		<>
+		<form
+			className="flex flex-1 flex-col justify-center gap-8 px-12 max-md:px-6"
+			autoComplete="off"
+			onSubmit={(e) => e.preventDefault()}
+		>
 			<div className="flex flex-col gap-1">
 				<h1 className="text-3xl font-semibold">Create an account</h1>
 				<p className="text-sm text-content-80">
@@ -25,11 +34,11 @@ export default function Register() {
 					</Link>
 				</h2>
 
-				<AppButton type="submit">
+				<AppButton type="submit" onClick={() => router.push("/dashboard")}>
 					Continue
 					<ArrowRight2 size="18" color="#FFF" variant="Bold" />
 				</AppButton>
 			</div>
-		</>
+		</form>
 	);
 }

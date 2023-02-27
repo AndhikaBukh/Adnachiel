@@ -8,12 +8,7 @@ export default function Auth({ children }: { children: React.ReactNode }) {
 					<Image src="/adna_text.svg" alt="Adnachiel Logo" height={52} width={200} />
 				</figure>
 
-				<form
-					className="flex flex-1 flex-col justify-center gap-8 px-12 max-md:px-6"
-					autoComplete="off"
-				>
-					{children}
-				</form>
+				{children}
 			</div>
 
 			<div className="flex-[1.8] p-5 max-lg:hidden">

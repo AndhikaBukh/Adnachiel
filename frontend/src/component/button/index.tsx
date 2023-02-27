@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface AppButtonProps {
 	children: React.ReactNode;
 	type?: "button" | "submit" | "reset";

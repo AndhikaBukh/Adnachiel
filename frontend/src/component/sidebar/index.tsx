@@ -1,10 +1,10 @@
 "use client";
 
 import { ArrowRight2, Chart2, Element2, Flash, Teacher, UserOctagon } from "iconsax-react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const dataSidebarLink = [
 	{
@@ -40,10 +40,12 @@ const dataSidebarUser = {
 	handle: "@andhikabukh",
 };
 
-export default function Sidebar() {
-	const pathname = usePathname();
+interface SidebarProps {
+	isOpen: boolean;
+}
 
-	const [isOpen, setIsOpen] = useState(true);
+export default function Sidebar({ isOpen }: SidebarProps) {
+	const pathname = usePathname();
 
 	const renderSidebarLink = (title: string, icon: any, href: string, key?: number) => (
 		<Link
@@ -62,27 +64,16 @@ export default function Sidebar() {
 	);
 
 	useEffect(() => {
-		const mediaQuery = window.matchMedia("(max-width: 1050px)");
-
-		const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-			setIsOpen(!event.matches);
-		};
-
-		mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-		return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
-	}, []);
+		console.log(isOpen);
+	}, [isOpen]);
 
 	return (
 		<nav
-			className={`flex w-[300px] flex-col gap-5 self-stretch bg-foreground py-4 px-6 transition-[margin] duration-500 ${
+			className={`flex min-h-screen w-[300px] flex-col gap-5 self-stretch bg-foreground py-4 px-4 transition-[margin,padding] duration-500 max-default:absolute max-default:left-0 max-default:ml-[-300px] max-default:border-r-2 max-default:border-foreground-light max-default:pt-[72px] max-[300px]:w-[100vw] ${
 				isOpen ? "!ml-[0px]" : "ml-[-300px]"
 			}`}
 		>
-			<button
-				className="flex items-center gap-3 rounded-md border-[1.5px] border-borderLine-30 py-[5px] px-3 hover:bg-foreground-light"
-				onClick={() => setIsOpen(!isOpen)}
-			>
+			<button className="flex items-center gap-3 rounded-md border-[1.5px] border-borderLine-30 py-[5px] px-3 hover:bg-foreground-light">
 				<div className="grid place-items-center rounded bg-background-light p-[5px]">
 					<Teacher size="16" color="#FFF" variant="Bold" />
 				</div>
