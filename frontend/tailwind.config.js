@@ -35,6 +35,9 @@ module.exports = {
 					30: "rgba(37, 42, 67, 0.3)",
 				},
 			},
+			screens: {
+				'default': '1050px',
+			}
 		},
 	},
 
