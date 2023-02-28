@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-export default function Auth({ children }: { children: React.ReactNode }) {
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<div className="flex min-h-screen min-w-full">
-			<div className="flex flex-1 flex-col gap-8 px-8 py-12 max-md:px-4 max-md:py-8">
+			<div className="flex flex-1 flex-col gap-8 px-8 py-12 max-md:px-4">
 				<figure className="relative">
-					<Image src="/adna_text.svg" alt="Adnachiel Logo" height={52} width={200} />
+					<Image src="/adna_text.svg" alt="Adnachiel Logo" height={32} width={160} />
 				</figure>
 
 				{children}

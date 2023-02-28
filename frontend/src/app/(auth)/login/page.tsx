@@ -11,14 +11,14 @@ export default function Login() {
 
 	return (
 		<form
-			className="flex flex-1 flex-col justify-center gap-8 px-12 max-md:px-6"
+			className="flex flex-1 flex-col justify-center gap-6 px-12 max-md:px-3"
 			autoComplete="off"
 			onSubmit={(e) => e.preventDefault()}
 		>
 			<div className="flex flex-col gap-1">
-				<h1 className="text-3xl font-semibold">Create an account</h1>
+				<h1 className="text-3xl font-semibold ">Login to your account</h1>
 				<p className="text-sm text-content-80">
-					Enter your email and create a password to get started with your account.
+					Please enter your credentials to login to your account.
 				</p>
 			</div>
 
