@@ -69,7 +69,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 
 	return (
 		<nav
-			className={`flex min-h-screen w-[300px] flex-col gap-5 self-stretch bg-foreground py-4 px-4 transition-[margin,padding] duration-500 max-default:absolute max-default:left-0 max-default:ml-[-300px] max-default:border-r-2 max-default:border-foreground-light max-default:pt-[72px] max-[300px]:w-[100vw] ${
+			className={`z-50 flex min-h-screen w-[300px] flex-col gap-5 self-stretch bg-foreground py-4 px-4 transition-[margin,padding] duration-500 max-default:absolute max-default:left-0 max-default:ml-[-300px] max-default:border-r-2 max-default:border-foreground-light max-default:pt-[72px] max-[300px]:w-[100vw] ${
 				isOpen ? "!ml-[0px]" : "ml-[-300px]"
 			}`}
 		>

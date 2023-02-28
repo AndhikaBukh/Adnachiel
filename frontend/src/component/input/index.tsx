@@ -1,16 +1,22 @@
 "use client";
 
 import { Eye, EyeSlash } from "iconsax-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useImperativeHandle, forwardRef } from "react";
 
-interface AppInputProps {
+interface AppInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 	type?: string;
 }
 
-export default function AppInput({ label, type }: AppInputProps) {
+export interface AppInputRef {
+	focus: () => void;
+	value: () => string;
+	setValue: (value: string) => void;
+}
+
+function AppInput({ label, type, ...rest }: AppInputProps, ref: React.Ref<AppInputRef>) {
 	const [changeType, setChangeType] = useState<string>(type || "text");
-	const [changeIcon, setChangeIcon] = useState<React.ReactNode>(undefined);
+	const [changeIcon, setChangeIcon] = useState<React.ReactNode | undefined>(undefined);
 	const getInput = useRef<HTMLInputElement>(null);
 
 	const usePassword = () => {
@@ -22,6 +28,19 @@ export default function AppInput({ label, type }: AppInputProps) {
 			setChangeIcon(<EyeSlash size="18" color="#FFF" variant="Bold" />);
 		}
 	};
+
+	useImperativeHandle(ref, () => ({
+		focus: () => {
+			if (getInput.current) getInput.current.focus();
+		},
+		value: () => {
+			if (getInput.current) return getInput.current.value;
+			return "";
+		},
+		setValue: (value: string) => {
+			if (getInput.current) getInput.current.value = value;
+		},
+	}));
 
 	useEffect(() => {
 		if (type === "password") setChangeIcon(<EyeSlash size="18" color="#FFF" variant="Bold" />);
@@ -40,17 +59,18 @@ export default function AppInput({ label, type }: AppInputProps) {
 				</label>
 			)}
 
-			<div className="flex items-center rounded-md border-2 border-borderLine-30 bg-foreground-light py-[10px] px-4 transition-[border] duration-300 focus-within:border-active-100">
+			<div className="flex items-center overflow-hidden rounded-md border-2 border-borderLine-30 bg-foreground-light transition-[border] duration-300 focus-within:border-active-100">
 				<input
-					className="bg flex-1 bg-transparent text-sm font-medium outline-none"
+					className="flex-1 bg-transparent py-2 px-4 text-sm font-medium outline-none"
 					type={changeType}
 					name={type}
 					id={type}
 					ref={getInput}
+					{...rest}
 				/>
 
-				{type !== undefined && (
-					<button type="button" onClick={usePassword}>
+				{changeIcon !== undefined && (
+					<button className="self-stretch px-[10px]" type="button" onClick={usePassword}>
 						{changeIcon}
 					</button>
 				)}
@@ -58,3 +78,5 @@ export default function AppInput({ label, type }: AppInputProps) {
 		</div>
 	);
 }
+
+export default forwardRef(AppInput);
