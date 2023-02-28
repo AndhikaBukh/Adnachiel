@@ -35,9 +35,14 @@ module.exports = {
 					30: "rgba(37, 42, 67, 0.3)",
 				},
 			},
+
+			boxShadow: {
+				default: "1px 1px 6px rgba(0, 0, 0, 0.2);",
+			},
+
 			screens: {
-				'default': '1050px',
-			}
+				default: "1050px",
+			},
 		},
 	},
 
