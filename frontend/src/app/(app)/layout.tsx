@@ -2,9 +2,10 @@
 
 import Sidebar from "@/component/sidebar";
 import { SidebarLeft } from "iconsax-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function App({ children }: { children: React.ReactNode }) {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
 	const [sidebarOpen, setSidebarOpen] = useState(
 		window.matchMedia("(min-width: 1050px)").matches
 	);
@@ -26,7 +27,7 @@ export default function App({ children }: { children: React.ReactNode }) {
 			<Sidebar isOpen={sidebarOpen} />
 
 			<div className="flex flex-1 flex-col">
-				<div className="max-default flex gap-4 py-6 px-4">
+				<div className="flex items-center gap-4 py-6 px-4">
 					<button
 						className={`relative z-50 transition-all duration-500 ${
 							!sidebarOpen ? " -rotate-180" : ""
@@ -35,17 +36,20 @@ export default function App({ children }: { children: React.ReactNode }) {
 							setSidebarOpen(!sidebarOpen);
 						}}
 					>
-						<SidebarLeft size="22" color="#FFF" variant="Bold" />
+						<SidebarLeft size="20" color="#FFF" variant="Bold" />
 					</button>
 
 					<h1 className="text-sm font-medium text-content-60">
-						inosoft-bootcamp&nbsp;&nbsp;/&nbsp;&nbsp;
+						<Link href="/bootcamp/@inosoft-bootcamp" className="hover:underline">
+							@inosoftbootcamp
+						</Link>
+						&nbsp;&nbsp;/&nbsp;&nbsp;
 						<span className="text-content-100">Batch#14</span>
 					</h1>
 				</div>
 
 				<main
-					className={`flex flex-1 items-center justify-center bg-background transition-all duration-500 max-default:rounded-tl-none ${
+					className={`flex max-w-[100vw] flex-1 items-center justify-center bg-background p-4 max-default:rounded-tl-none ${
 						sidebarOpen ? " rounded-tl-xl" : "rounded-tl-none"
 					}`}
 				>
