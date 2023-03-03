@@ -7,18 +7,6 @@ export interface User {
 
 export default function useAuth() {
 	return {
-		verifyUser() {
-			return localStorage.getItem("user") !== null;
-		},
-
-		verifyEmail() {
-			const user: User = JSON.parse(localStorage.getItem("user") || "{}");
-
-			console.log(user.email !== undefined);
-
-			return user.email !== undefined;
-		},
-
 		getUser() {
 			return JSON.parse(localStorage.getItem("user") || "{}") as User;
 		},
@@ -27,33 +15,67 @@ export default function useAuth() {
 			localStorage.removeItem("user");
 		},
 
+		verifyUser() {
+			return true;
+		},
+
+		verifyEmail() {
+			const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+
+			console.log("Is email available -", user.email !== undefined);
+
+			if (user.email !== undefined) console.log("Registered as -", user.email);
+
+			return user.email !== undefined;
+		},
+
+		verifyPassword() {
+			const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+
+			console.log("Is password available -", user.password !== undefined);
+
+			if (user.password !== undefined) console.log("Password set to -", user.password);
+
+			return user.password !== undefined;
+		},
+
 		async buildEmail(email: string) {
+			const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+
 			return await new Promise((resolve, reject) => {
-				if (email === "") reject("Email is required");
+				if (email === "") return reject("Email is required");
 
-				if (!email.includes("@")) reject("Email is invalid");
+				if (!email.includes("@")) return reject("Email is invalid");
 
-				const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+				user.email = email;
 
-				if (user.email !== undefined) user.email = email;
+				localStorage.setItem("user", JSON.stringify(user));
 
-				localStorage.setItem("user", JSON.stringify({ email }));
+				console.log(user);
+				console.log(JSON.parse(localStorage.getItem("user") || "{}"));
 
 				resolve("User registered successfully");
 			});
 		},
 
-		async buildPassword(password: string) {
+		async buildPassword(password: string, confirmPassword: string) {
+			const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+
 			return await new Promise((resolve, reject) => {
-				if (password === "") reject("Password is required");
+				if (password === "") return reject("Password is required!");
 
-				if (password.length < 6) reject("Password must be at least 6 characters");
+				if (confirmPassword === "") return reject("Confirm password is required!");
 
-				const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+				if (password !== confirmPassword) return reject("Passwords does not match!");
 
-				if (user.password !== undefined) user.password = password;
+				if (password.length < 6) return reject("Password must be at least 6 characters!");
 
-				localStorage.setItem("user", JSON.stringify({ user }));
+				user.password = confirmPassword;
+
+				localStorage.setItem("user", JSON.stringify(user));
+
+				console.log(user);
+				console.log(JSON.parse(localStorage.getItem("user") || "{}"));
 
 				resolve("User registered successfully");
 			});
