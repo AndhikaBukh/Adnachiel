@@ -3,6 +3,7 @@ interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	type?: "button" | "submit" | "reset";
 	variant?: "default" | "fade" | "outline";
 	center?: boolean;
+	fill?: boolean;
 	onClick?: () => void;
 }
 
@@ -11,6 +12,7 @@ export default function AppButton({
 	type = "button",
 	variant = "default",
 	center = true,
+	fill = false,
 	...rest
 }: AppButtonProps) {
 	return (
@@ -21,7 +23,7 @@ export default function AppButton({
 					: variant === "fade"
 					? " bg-transparent px-[14px] hover:bg-foreground-light "
 					: " border border-borderLine-30 px-[14px]  hover:bg-foreground-light"
-			}${center ? " justify-center" : ""} max-[420px]:text-xs`}
+			}${center ? " justify-center" : ""} ${fill ? "w-full" : ""} max-[420px]:text-xs`}
 			type={type}
 			{...rest}
 		>
