@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
@@ -8,10 +10,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 					<Image src="/adna_text.svg" alt="Adnachiel Logo" height={32} width={160} />
 				</figure>
 
-				{children}
+				<form
+					className="flex min-w-[520px] flex-1 flex-col justify-center gap-6 px-12 max-md:min-w-0 max-md:px-3"
+					autoComplete="off"
+					onSubmit={(e) => e.preventDefault()}
+				>
+					{children}
+				</form>
 			</div>
 
-			<div className="flex-[1.8] p-5 max-lg:hidden">
+			<div className="flex-[1.85] p-5 max-lg:hidden">
 				<figure className="relative grid min-h-full place-items-center overflow-hidden rounded-lg">
 					<Image
 						src="/auth_image.png"

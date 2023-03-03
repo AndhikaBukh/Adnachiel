@@ -10,11 +10,7 @@ export default function Login() {
 	const router = useRouter();
 
 	return (
-		<form
-			className="flex flex-1 flex-col justify-center gap-6 px-12 max-md:px-3"
-			autoComplete="off"
-			onSubmit={(e) => e.preventDefault()}
-		>
+		<>
 			<div className="flex flex-col gap-1">
 				<h1 className="text-3xl font-semibold ">Login to your account</h1>
 				<p className="text-sm text-content-80">
@@ -26,7 +22,7 @@ export default function Login() {
 
 			<AppInput label="Password" type="password" />
 
-			<div className="flex gap-3 max-md:flex-col">
+			<div className="flex gap-6 max-md:flex-col">
 				<h2 className="flex-1 whitespace-nowrap text-sm font-medium text-content-80">
 					Didn&apos;t have an account?&nbsp;
 					<Link href="/register" className="text-active-100 hover:underline">
@@ -39,6 +35,6 @@ export default function Login() {
 					<ArrowRight2 size="18" color="#FFF" variant="Bold" />
 				</AppButton>
 			</div>
-		</form>
+		</>
 	);
 }

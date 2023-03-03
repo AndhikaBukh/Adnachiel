@@ -6,11 +6,13 @@ import useAuth from "@/utils/auth";
 import { ArrowRight2 } from "iconsax-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Register() {
 	const router = useRouter();
 	const auth = useAuth();
+
+	const [error, setError] = useState("");
 
 	const getEmail = useRef<AppInputRef>(null);
 
@@ -27,9 +29,9 @@ export default function Register() {
 				</p>
 			</div>
 
-			<AppInput label="Email Address" type="email" ref={getEmail} />
+			<AppInput label="Email Address" type="email" error={error} ref={getEmail} autoFocus />
 
-			<div className="flex gap-3 max-md:flex-col">
+			<div className="flex gap-6 max-md:flex-col">
 				<h2 className="flex-1 whitespace-nowrap text-sm font-medium text-content-80">
 					Already have an account?&nbsp;
 					<Link href="/login" className="text-active-100 hover:underline">
@@ -43,16 +45,17 @@ export default function Register() {
 						if (getEmail.current?.value !== undefined) {
 							auth.buildEmail(getEmail.current?.value())
 								.then(() => {
-									console.log(auth.getUser());
-									router.push("/register/verify");
+									console.log("Email assigned to - ", auth.getUser().email);
+									router.push("/register/password");
 								})
 								.catch((err) => {
-									console.log(err);
+									setError(err);
+									getEmail.current?.setError(true);
 								});
 						}
 					}}
 				>
-					Send Verification
+					Verify
 					<ArrowRight2 size="18" color="#FFF" variant="Bold" />
 				</AppButton>
 			</div>
