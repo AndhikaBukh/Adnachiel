@@ -6,9 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-	const [sidebarOpen, setSidebarOpen] = useState(
-		window.matchMedia("(min-width: 1050px)").matches
-	);
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 
 	useEffect(() => {
 		const mediaQuery = window.matchMedia("(max-width: 1050px)");
