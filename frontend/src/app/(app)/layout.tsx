@@ -9,12 +9,14 @@ import { useEffect, useState } from "react";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
 	const pathname = usePathname();
 
-	const [sidebarOpen, setSidebarOpen] = useState(matchMedia("(max-width: 1050px)").matches);
+	const [sidebarOpen, setSidebarOpen] = useState(true);
 
 	useEffect(() => {
 		const mediaQuery = window.matchMedia("(max-width: 1050px)");
 
 		const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+			if (event.matches) return setSidebarOpen(true);
+
 			setSidebarOpen(!event.matches);
 		};
 
@@ -23,10 +25,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 		return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
 	}, []);
 
-	useEffect(() => {
-		if (window.matchMedia("(max-width: 1050px)").matches) setSidebarOpen(false);
-	}, [pathname]);
-
 	return (
 		<div className="relative flex min-h-screen min-w-full overflow-hidden">
 			<Sidebar isOpen={sidebarOpen} />
@@ -34,8 +32,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 			<div className="flex flex-1 flex-col">
 				<div className="flex items-center gap-4 py-6 px-4">
 					<button
-						className={`relative z-50 transition-all duration-500 ${
-							!sidebarOpen ? " -rotate-180" : ""
+						className={`relative z-50 transition-all duration-500 max-default:rotate-0 ${
+							!sidebarOpen ? "-rotate-180" : "max-default:!-rotate-180"
 						}`}
 						onClick={() => {
 							setSidebarOpen(!sidebarOpen);
