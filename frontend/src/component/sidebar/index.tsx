@@ -4,7 +4,6 @@ import { ArrowRight2, Chart2, Element2, Flash, Teacher, UserOctagon } from "icon
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 const dataSidebarLink = [
 	{
@@ -53,6 +52,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 			className={`flex items-center gap-2 rounded-md px-[14px] py-2 ${
 				pathname === href ? "bg-active-100" : "hover:bg-foreground-light"
 			}`}
+			replace
 			key={key}
 		>
 			{icon}
@@ -63,13 +63,9 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 		</Link>
 	);
 
-	useEffect(() => {
-		console.log(isOpen);
-	}, [isOpen]);
-
 	return (
 		<nav
-			className={`z-50 flex min-h-screen w-[300px] flex-col gap-5 self-stretch bg-foreground py-4 px-4 transition-[margin,padding] duration-500 max-default:absolute max-default:left-0 max-default:ml-[-300px] max-default:border-r-2 max-default:border-foreground-light max-default:pt-[72px] max-[300px]:w-[100vw] ${
+			className={`z-50 flex min-h-screen w-[300px] flex-col gap-5 self-stretch bg-foreground py-4 px-4 transition-[margin,padding] duration-500 max-default:absolute max-default:left-0 max-default:border-r-2 max-default:border-foreground-light max-default:pt-[72px] max-[300px]:w-[100vw] ${
 				isOpen ? "!ml-[0px]" : "ml-[-300px]"
 			}`}
 		>

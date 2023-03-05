@@ -19,10 +19,8 @@ export default function Dashboard() {
 					<Teacher size="22" color="#FFF" variant="Bold" />
 				</div>
 				<div className="flex flex-col">
-					<h1 className="truncate text-xs font-medium min-[1050px]:text-base">
-						Inosoft Bootcamp - Batch #14
-					</h1>
-					<h2 className="truncate text-[10px] font-semibold text-content-60 min-[1050px]:text-xs">
+					<h1 className="truncate text-sm font-medium">Inosoft Bootcamp - Batch #14</h1>
+					<h2 className="truncate text-xs font-semibold text-content-60">
 						<Link href="/bootcamp/inosoftbootcamp" className="hover:underline">
 							@inosoftbootcamp
 						</Link>
@@ -47,7 +45,7 @@ export default function Dashboard() {
 		</div>
 	);
 
-	const renderProgress = () => (
+	const renderProfile = () => (
 		<div className="flex flex-col gap-3 rounded-md bg-foreground py-4 shadow-lg">
 			<div className="flex items-center justify-between px-4">
 				<h1 className="truncate text-sm font-semibold">Bootcamp Participants</h1>

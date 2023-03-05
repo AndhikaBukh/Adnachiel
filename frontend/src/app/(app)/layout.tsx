@@ -3,10 +3,13 @@
 import Sidebar from "@/component/sidebar";
 import { SidebarLeft } from "iconsax-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const pathname = usePathname();
+
+	const [sidebarOpen, setSidebarOpen] = useState(matchMedia("(max-width: 1050px)").matches);
 
 	useEffect(() => {
 		const mediaQuery = window.matchMedia("(max-width: 1050px)");
@@ -19,6 +22,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
 		return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
 	}, []);
+
+	useEffect(() => {
+		if (window.matchMedia("(max-width: 1050px)").matches) setSidebarOpen(false);
+	}, [pathname]);
 
 	return (
 		<div className="relative flex min-h-screen min-w-full overflow-hidden">
