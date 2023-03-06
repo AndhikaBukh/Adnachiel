@@ -43,6 +43,13 @@ interface SidebarProps {
 	isOpen: boolean;
 }
 
+/**
+ * @param isOpen - Determine if the sidebar is open or not.
+ *
+ * The props `isOpen` will be reversed in mobile version, so that the sidebar will be closed by default.
+ *
+ * Beacuse of useEffect delayed rendering that causing the sidebar to open then closing.
+ */
 export default function Sidebar({ isOpen }: SidebarProps) {
 	const pathname = usePathname();
 

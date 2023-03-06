@@ -35,6 +35,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
 			<div className="flex flex-1 flex-col">
 				<div className="flex items-center gap-4 py-6 px-4">
+					{/* This button reverts its functionallity and appearance in mobile devices, Why? Checkout Sidebar Component */}
 					<button
 						className={`relative z-50 transition-all duration-500 max-default:rotate-0 ${
 							!sidebarOpen ? "-rotate-180" : "max-default:!-rotate-180"
@@ -43,14 +44,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 							setSidebarOpen(!sidebarOpen);
 						}}
 					>
-						<SidebarLeft size="20" color="#FFF" variant="Bold" />
+						<SidebarLeft size="22" color="#FFF" variant="Bold" />
 					</button>
 
 					<h1 className="text-sm font-medium text-content-60">
-						<Link href="/bootcamp/@inosoft-bootcamp" className="hover:underline">
-							@inosoftbootcamp
-						</Link>
-						&nbsp;&nbsp;/&nbsp;&nbsp;
+						@inosoftbootcamp&nbsp;&nbsp;/&nbsp;&nbsp;
 						<span className="text-content-100">Batch#14</span>
 					</h1>
 				</div>
