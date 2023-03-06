@@ -25,6 +25,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 		return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
 	}, []);
 
+	useEffect(() => {
+		if (window.matchMedia("(max-width: 1050px)").matches) return setSidebarOpen(true);
+	}, [pathname]);
+
 	return (
 		<div className="relative flex min-h-screen min-w-full overflow-hidden">
 			<Sidebar isOpen={sidebarOpen} />
